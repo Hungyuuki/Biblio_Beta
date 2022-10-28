@@ -1,0 +1,9 @@
+insert into Roles (code, value) values('R1', 'Admin');
+insert into Roles (code, value) values('R2', 'Moderator');
+insert into Roles (code, value) values('R3', 'User');
+
+insert into Users (userName, password, email, avatar) values('Odin', 'C1121G1', 'odin@cmcglobal.vn','kimochi');
+insert into Users (userName, password, email, avatar) values('Ryuki', 'C1121G1', 'ryuki@cmcglobal.vn','kimochi');
+insert into Users (userName, password, email, avatar) values('Zolda', 'C1121G1', 'zolda@cmcglobal.vn','kimochi');
+insert into Users (userName, password, email, avatar) values('Femme', 'C1121G1', 'femme@cmcglobal.vn','kimochi');
+insert into Users (userName, password, email, avatar) values('Alternative', 'C1121G1', 'alter@cmcglobal.vn','kimochi');

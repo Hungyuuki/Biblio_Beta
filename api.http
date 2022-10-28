@@ -1,0 +1,42 @@
+GET http://localhost:5000/api/v1/user/fdfdfdđff
+
+###
+POST http://localhost:5000/api/v1/auth/register
+Content-Type: application/json 
+
+{
+    "userName": "Odin",
+    "email": "Odin@gmail.com",
+    "password": "123456"
+}
+
+###
+POST http://localhost:5000/api/v1/auth/login
+Content-Type: application/json 
+
+{
+    "userName": "Taiga",
+    "email": "Taiga@gmail.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:5000/api/v1/user/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJUYWlnYUBnbWFpbC5jb20iLCJyb2xlX2NvZGUiOiJSMyIsImlhdCI6MTY2Njk1MjMxNSwiZXhwIjoxNjY3Mzg0MzE1fQ.z6f56f_E-R4iVXSjkEOzGI48jt3IaVJa6fuU20lHngE
+###
+GET http://localhost:5000/api/v1/insert/
+
+###
+GET http://localhost:5000/api/v1/book/
+
+###
+GET http://localhost:5000/api/v1/book/?name=The Passion
+
+###
+GET http://localhost:5000/api/v1/book/?order[]=price&order[]=ASC&limit=3
+
+###
+GET http://localhost:5000/api/v1/book/?available[]=5&available[]=10
+
+
+//File này chạy được vì đã cài file REST Client ở phần tiện ích mở rộng
