@@ -15,14 +15,14 @@ POST http://localhost:5000/api/v1/auth/login
 Content-Type: application/json 
 
 {
-    "userName": "Taiga",
-    "email": "Taiga@gmail.com",
+    "userName": "Blade",
+    "email": "Blade@gmail.com",
     "password": "123456"
 }
 
 ###
 GET http://localhost:5000/api/v1/user/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJUYWlnYUBnbWFpbC5jb20iLCJyb2xlX2NvZGUiOiJSMyIsImlhdCI6MTY2Njk1MjMxNSwiZXhwIjoxNjY3Mzg0MzE1fQ.z6f56f_E-R4iVXSjkEOzGI48jt3IaVJa6fuU20lHngE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImVtYWlsIjoiQmxhZGVAZ21haWwuY29tIiwicm9sZV9jb2RlIjoiUjEiLCJpYXQiOjE2NjcyNjgzMzgsImV4cCI6MTY2NzcwMDMzOH0.MoSBH-5N9RgdROVVy5d9fvLyB7NEtEm_U8f9RRUOwEo
 ###
 GET http://localhost:5000/api/v1/insert/
 
