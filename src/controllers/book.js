@@ -5,7 +5,7 @@ import {
   image,
   category_code,
   price,
-  available, bookid, bookids
+  available, bookid, bookids, filename
 } from "../helpers/joi_schema";
 import joi from "joi";
 const cloudinary = require("cloudinary").v2;
@@ -28,6 +28,7 @@ export const createNewBook = async (req, res) => {
     const { error } = joi
       .object({ bookid, title, image, category_code, price, available })
       .validate({ ...req.body, image: fileData?.path }); //Nếu fileData có thì mới lấy link path của image
+      console.log(object)
     if (error) {
       if (fileData) cloudinary.uploader.destroy(fileData.filename);
       return badRequest(error.details[0].message, res); //nếu có lỗi thì response ra một message
@@ -61,7 +62,7 @@ export const updateBook = async (req, res) => {
 // DELETE
 export const deleteBook = async (req, res) => {
   try {
-      const { error } = joi.object({ bookids, filename }).validate(req.query)
+      const { error } = joi.object({ bookids, filename }).validate(req.query) //muốn xóa đối tượng nào thì phải truyền vào đúng bằng này trường của đối tượng đó(có validate)
       if (error) {
           return badRequest(error.details[0].message, res)
       }

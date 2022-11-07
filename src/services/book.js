@@ -35,7 +35,6 @@ export const getBooks = ({ page, limit, order, name, available, ...query }) =>
         mes: response.rows.length > 0 ? "Got it" : "Cannot found book(s)",
         bookData: response,
       });
-      console.log(response);
     } catch (error) {
       reject(error);
     }
@@ -50,8 +49,8 @@ export const createNewBook = (body, fileData) =>
         where: { title: body?.title }, //where này để filter chứ ko phải để query
         defaults: {
           ...body,
-          image: fileData?.path,
           id: generateId(),
+          image: fileData?.path,
           filename: fileData?.filename,
         },
       });
@@ -59,8 +58,8 @@ export const createNewBook = (body, fileData) =>
         err: response[1] ? 0 : 1,
         mes: response[1] ? "Created" : "Cannot create new book",
       }); //kiểm tra xem có data không
-      if (fileData && !response[1])
-        cloudinary.uploader.destroy(fileData.filename); //nếu có fileData, và không tạo được books mới thì sẽ xóa ảnh
+      if (fileData && !response[1]) cloudinary.uploader.destroy(fileData.filename); 
+      //nếu có fileData, và không tạo được books mới thì sẽ xóa ảnh
     } catch (error) {
       reject(error);
       if (fileData) cloudinary.uploader.destroy(fileData.filename); //nếu có fileData thì cũng xóa ảnh luôn

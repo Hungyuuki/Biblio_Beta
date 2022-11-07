@@ -16,7 +16,6 @@ export const register = ({ userName, email, password }) =>
           password: hashPassword(password),
         },
       });
-      console.log(response[0].email);
       //Nếu có 1 đăng ký mới thì sẽ tạo ra một token, chứa các giá trị đã được mã hóa ở trong cặp ngoặc, nếu không có đăng ký mới thì token sẽ trả về null
       const token = response[1]
         ? jwt.sign(
@@ -32,7 +31,7 @@ export const register = ({ userName, email, password }) =>
       resolve({
         err: response[1] ? 0 : 1,
         mes: response[1] ? "Register is successfully" : "Email already exists",
-        access_token: token ? `Bearer ${token}` : token,
+        'access_token': token ? `Bearer ${token}` : token,
       });
     } catch (error) {
       reject(error);
@@ -47,7 +46,6 @@ export const login = ({ userName, email, password }) =>
         where: { email },
         raw: true,
       });
-      console.log(response);
 
       // So sánh pass mình truyền vào với pass mà có sẵn trên DB, nếu response là null thì isChecked cũng là null luôn
       const isChecked =
