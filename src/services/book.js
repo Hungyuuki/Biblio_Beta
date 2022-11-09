@@ -1,6 +1,7 @@
 import db from "../models";
 import { Op } from "sequelize";
 import { v4 as generateId } from "uuid";
+import { CloudinaryStorage } from "multer-storage-cloudinary";
 const cloudinary = require("cloudinary").v2;
 //READ
 export const getBooks = ({ page, limit, order, name, available, ...query }) =>
@@ -98,10 +99,10 @@ export const updateBook = ({ bookid, ...body }, fileData) =>
 /*
 params = {
     bookids=[id1, id2],
-    filename=[filename1, filename2]
+    filename=[filename1, filename2] filename là tên ảnh
 }
 */
-export const deleteBook = (bookids, filename) => new Promise(async (resolve, reject) => {
+export const deleteBook = (bookids) => new Promise(async (resolve, reject) => {
     try {
         const response = await db.Book.destroy({
             where: { id: bookids }
@@ -110,7 +111,7 @@ export const deleteBook = (bookids, filename) => new Promise(async (resolve, rej
             err: response > 0 ? 0 : 1,// Nếu trả về 0 thì là ko xóa dòng nào, nếu >0 thì trả về 0, không >0 thì trả về 1
             mes: `${response} book(s) deleted`
         })
-        cloudinary.api.delete_resources(filename)
+        cloudinary.api.delete_resources(filename)//Xóa luôn file trên cloudinary
     } catch (error) {
         reject(error)
     }

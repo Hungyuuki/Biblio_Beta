@@ -7,3 +7,6 @@ insert into Users (userName, password, email, avatar) values('Ryuki', 'C1121G1',
 insert into Users (userName, password, email, avatar) values('Zolda', 'C1121G1', 'zolda@cmcglobal.vn','kimochi');
 insert into Users (userName, password, email, avatar) values('Femme', 'C1121G1', 'femme@cmcglobal.vn','kimochi');
 insert into Users (userName, password, email, avatar) values('Alternative', 'C1121G1', 'alter@cmcglobal.vn','kimochi');
+
+
+Lưu ý là video 15 chưa làm tí gì

@@ -62,7 +62,7 @@ export const updateBook = async (req, res) => {
 // DELETE
 export const deleteBook = async (req, res) => {
   try {
-      const { error } = joi.object({ bookids, filename }).validate(req.query) //muốn xóa đối tượng nào thì phải truyền vào đúng bằng này trường của đối tượng đó(có validate)
+      const { error } = joi.object({ bookids,filename }).validate(req.query) //muốn xóa đối tượng nào thì phải truyền vào đúng bằng này trường của đối tượng đó(có validate)
       if (error) {
           return badRequest(error.details[0].message, res)
       }
