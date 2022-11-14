@@ -28,7 +28,7 @@ export const register = ({ userName, email, password }) =>
             { expiresIn: "5d" }
           )
         : null;
-      resolve({
+      resolve({//
         err: response[1] ? 0 : 1,
         mes: response[1] ? "Register is successfully" : "Email already exists",
         'access_token': token ? `Bearer ${token}` : token,

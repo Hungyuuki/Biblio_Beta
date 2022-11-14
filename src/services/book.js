@@ -9,12 +9,12 @@ export const getBooks = ({ page, limit, order, name, available, ...query }) =>
     //truyền vào đây những trường mà người dùng muốn(page, limit, order, còn các cái khác lấy qua biến query)
     try {
       const queries = { nest: true, raw: true }; //nest: true: từ bảng này lấy data của bảng khác dùng association bằng 1 khóa phụ thì những data của bảng khác sẽ gom lại thành một object
-      const offset = !page || +page <= 1 ? 0 : +page - 1;
+      const offset = !page || +page <= 1 ? 0 : +page - 1;//Nếu không truyền page thì offset = 1, nếu truyền page thì = page-1
       const fLimit = +limit || +process.env.LIMIT_BOOK; //limit là số bản ghi mình muốn có trong 1 page, nếu người dùng truyền vào số limit thì lấy số đó làm limit, còn nếu ko thì mặc định limit = 7
       queries.offset = offset * fLimit; //Đại loại dùng để phân trang, offset * limit = số bản ghi
       queries.limit = fLimit; //Câu lệnh queries.... là để người dùng truyền vào page hoặc limit hoặc order dưới dạng query
       if (order) queries.order = [order];
-      if (name) query.title = { [Op.substring]: name }; //cần phân biệt query là để tìm kiếm theo tên, còn queries là một đối tượng
+      if (name) query.title = { [Op.substring]: name }; //cần phân biệt query là để tìm kiếm theo tên, subString là tìm tên bằng một đoạn string con, còn queries là một đối tượng
       if (available) query.available = { [Op.between]: available };
       const response = await db.Book.findAndCountAll({
         where: query, //where này để filter chứ ko phải để query
