@@ -7,7 +7,7 @@ export const getUserById = (userId) =>
         where: { id: userId }, //tìm userID trong cột id
         //tiến hành khi lấy user thì không lấy ra pasword
         attributes: {//khai báo trong đối tượng sẽ trích xuất ra các thuộc tính nào
-          exclude: ["password", "role_code"], //khai báo trong đối tưỡng được trích ra sẽ không có các thuộc tính nào
+          exclude: ["password", "role_code", "refresh_token"], //khai báo trong đối tưỡng được trích ra sẽ không có các thuộc tính nào
         },
         include: [
           {
