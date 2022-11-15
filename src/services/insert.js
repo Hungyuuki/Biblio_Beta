@@ -47,3 +47,4 @@ export const insertData = () =>
 
 //Promise: Nó chính là kết quả trả về của một hàm nào đó chứ không có gì khó hiểu cả,
 //chẳng qua trong bất đồng bộ thì sẽ có những lúc promise bị pending hoặc không được trả về.
+//Còn trong đồng bộ thì kết quả luôn trả về(nên thường ko gọi là promise)

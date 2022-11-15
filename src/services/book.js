@@ -102,7 +102,7 @@ params = {
     filename=[filename1, filename2] filename là tên ảnh
 }
 */
-export const deleteBook = (bookids) => new Promise(async (resolve, reject) => {
+export const deleteBook = (bookids, filename) => new Promise(async (resolve, reject) => {
     try {
         const response = await db.Book.destroy({
             where: { id: bookids }
@@ -111,7 +111,10 @@ export const deleteBook = (bookids) => new Promise(async (resolve, reject) => {
             err: response > 0 ? 0 : 1,// Nếu trả về 0 thì là ko xóa dòng nào, nếu >0 thì trả về 0, không >0 thì trả về 1
             mes: `${response} book(s) deleted`
         })
-        cloudinary.api.delete_resources(filename)//Xóa luôn file trên cloudinary
+        cloudinary.api.delete_resources(filename, (err, result) => {
+          console.log('err', err)
+          console.log('res', result)
+        })//Check nếu trên cloudinary có filename thì xóa luôn file ảnh
     } catch (error) {
         reject(error)
     }

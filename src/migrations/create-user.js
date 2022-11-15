@@ -21,6 +21,9 @@ module.exports = {
       avatar: {
         type: Sequelize.STRING
       },      
+      refresh_token: {
+        type: Sequelize.STRING
+      },  
       role_code: {
         type: Sequelize.STRING, defaultValue: 'R3'
       },
@@ -38,4 +41,4 @@ module.exports = {
     await queryInterface.dropTable('Users');
   }
 };
-//đây là file để tạo bảng trên DB, cho nên sẽ phải trùng các cột với bên model.
+//đây là file mà code đã được tự động generate để tạo bảng trên DB, cho nên sẽ phải trùng các cột với bên model.

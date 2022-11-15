@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("Books", {
+    await queryInterface.createTable("Books", {//chờ cho tạo bảng có chứa các trường xong thì mới thực hiện up
       id: {
         allowNull: false,
         primaryKey: true,
@@ -26,7 +26,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {//nếu promise là bảng không tạo thành công thì thực hiện drop cái Table đó đi
     await queryInterface.dropTable("Books");
   },
 };

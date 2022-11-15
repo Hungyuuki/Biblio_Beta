@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, {TokenExpiredError} from 'jsonwebtoken';
 import { notAuth } from './handle_errors';
 const verifyToken = (req, res, next) => {
   //next: chạy xong đối tượng này rồi sẽ chạy qua đối tượng khác
@@ -10,7 +10,11 @@ const verifyToken = (req, res, next) => {
   //phần tử thứ 2 là đoạn token dùng để gắn token vào header
   jwt.verify(accessToken, process.env.JWT_SECRET, (err, user) => {
     //verify một đối tượng user đã được trả về sau khi giải mã đoạn token
-    if (err) return notAuth('Access token may be expired or invalid', res)
+    
+      const isChecked = err instanceof TokenExpiredError
+      if (!isChecked) return notAuth('Access token invalid', res, isChecked)
+      if (isChecked) return notAuth('Access token expired', res, isChecked)
+    
     req.user = user
     next()
   });
